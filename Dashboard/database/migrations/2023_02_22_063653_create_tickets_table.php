@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('respuesta');
             $table->string('status');
             $table->timestamps();
-            $table->foreign('autor_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('autor_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
         });
     }

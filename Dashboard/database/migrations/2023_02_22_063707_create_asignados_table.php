@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('ticket_id');
             $table->string('observacion');
             $table->timestamps();
-            $table->foreign('encargado_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('encargado_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
         });
     }
