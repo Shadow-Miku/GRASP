@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('departamentos', function (Blueprint $table) {
-            $table->engine="InnoDB";
-            $table->id();
+          
+            $table->id('IdDep');
             $table->string('departamento');
             $table->timestamps();
         });

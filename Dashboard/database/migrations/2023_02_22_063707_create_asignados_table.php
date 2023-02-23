@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('asignados', function (Blueprint $table) {
-            $table->engine="InnoDB";
-            $table->id();
-            $table->unsignedInteger('encargado_id');
-            $table->unsignedInteger('ticket_id');
-            $table->string('observacion');
+         
+            $table->id('idAsg');
+            $table->unsignedBigInteger('encargadoId')->nullable();
+            $table->unsignedBigInteger('ticketId')->nullable();
+            $table->string('observacion')->default('Sin observaciones')->nullable();
             $table->timestamps();
-            $table->foreign('encargado_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
+            $table->foreign('encargadoId')->references('idUs')->on('usuarios')->onDelete('cascade');
+            $table->foreign('ticketId')->references('idTk')->on('tickets')->onDelete('cascade');
         });
     }
 

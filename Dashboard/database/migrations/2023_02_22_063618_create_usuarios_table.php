@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->engine="InnoDB";
-            $table->id();
+         
+            $table->id('idUs');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('username')->unique();
             $table->string('password');
-            $table->string('roll');
+            $table->string('roll')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
