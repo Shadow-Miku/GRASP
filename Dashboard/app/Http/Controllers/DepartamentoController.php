@@ -3,82 +3,61 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidadorDepartamentos;
+use DB;
+use Carbon\Carbon;
 
 class DepartamentoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $filtrar = $request->get('filtrar');
+        $consultaDep = DB::table('departamentos')->where('departamento','like','%'.$filtrar.'%')->get();
+        $ConsultaD= DB::table('departamentos')->get();
+        return view('admin.adminDep',compact('ConsultaD','filtrar','consultaDep'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.regDep');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(ValidadorDepartamentos $request)
     {
-        //
+        DB::table('departamentos')->insert([
+            "departamento"=> $request->input('departamento'),
+            "created_at"=> Carbon::now(),
+            "updated_at"=> Carbon::now()
+        ]);
+        return redirect('admin.adminDep')->with('confirmacion','abc');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $consultaId= DB::table('departamentos')->where('IdDep',$id)->first();
+        return view('admin.eliDep', compact('consultaId'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $consultaId= DB::table('departamentos')->where('idDep',$id)->first();
+        return view('admin.actDep', compact('consultaId'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+     DB::table('departamentos')->where('idDep',$id)->update([
+            "departamento"=> $request->input('departamento'),
+            "updated_at"=> Carbon::now()
+        ]);
+
+        return redirect('admin.adminDep')->with('actualizar','abc');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        DB::table('departamentos')->where('idDep',$id)->delete();
+
+        return redirect('admin.adminDep')->with('elimina','abc');
     }
 }

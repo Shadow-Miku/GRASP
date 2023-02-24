@@ -3,82 +3,65 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidadorDepartamentos;
 
 class VistaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+   
+    public function showWelcome(){
+        return view('Welcome');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function showPriAdm(){
+        return view('admin.priAdm');
+    }
+    /* Departamento Adm */
+
+    public function showRegDep(){
+        return view('admin.regDep');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function showAdmDep(){
+        return view('admin.adminDep');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    /* Usuarios Adm */
+
+    public function showRegUsu(){
+        return view('admin.regUsu');
+    }
+        /* Clientes Adm */
+
+        public function showAdmCli(){
+            return view('admin.admCli');
+        }
+
+        public function showAdmAux(){
+            return view('admin.admAux');
+        }
+
+        /* Auxiliares Adm */
+
+    /* Tickets Adm */
+
+    public function showRegTik(){
+        return view('admin.regTik');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function showAdmTik(){
+        return view('admin.admTik');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    /*Reportes */
+
+    public function showreporte(){
+        return view('admin.reporte');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    /* Rutas para procesar registros */
+
+    public function procesarregistroDeparamento(ValidadorDepartamentos $req){
+        return redirect('admin.regDep')->with('confirmacion','Registro de departamento exitoso');
     }
+
 }
