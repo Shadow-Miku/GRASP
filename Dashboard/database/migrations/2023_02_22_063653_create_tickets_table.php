@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tickets', function (Blueprint $table) {
-            
+            $table->engine="InnoDB";
             $table->id('idTk');
             $table->unsignedBigInteger('autor');
             $table->unsignedBigInteger('departamento');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('respuesta')->default('Sin comentarios')->nullable();
             $table->string('status')->default('Pendiente')->nullable();
             $table->timestamps();
-            $table->foreign('autor')->references('idUs')->on('usuarios')->onDelete('cascade');
+            $table->foreign('autor')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('departamento')->references('idDep')->on('departamentos')->onDelete('cascade');
         });
     }
