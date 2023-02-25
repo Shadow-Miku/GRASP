@@ -14,7 +14,7 @@
 @if (session()->has('elimina'))
         {!!" <script> Swal.fire(
             'F',
-            'El departamento murio,
+            'El departamento murio',
             'success'
           ) </script>"!!}        
 @endif
