@@ -60,7 +60,7 @@
 
                           <li>
 
-                            <a href="  " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Registrar usuarios </span> </a>
+                            <a href=" {{route('adminUsu.create')}} " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Registrar usuarios </span> </a>
 
                           </li>
 
@@ -87,14 +87,14 @@
 
                           <li class="w-100">
 
-                              <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Administrar usuarios </span> </a>
+                              <a href=" {{route('adminUsu.index')}} " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Administrar usuarios </span> </a>
 
                           </li>
 
 
                           <li>
 
-                              <a href=" {{route('adminDep.index')}}" class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Administrar departamentos </span> </a>
+                              <a href=" {{route('adminDep.index')}} " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Administrar departamentos </span> </a>
 
                           </li>
 

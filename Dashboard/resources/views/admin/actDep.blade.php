@@ -2,8 +2,6 @@
 
 @section('contenido')
 
-
-
     <div class="container mt-5 col-md-6">
 
         <h1 class="display-1 text-center mb-5"> Actualizar Datos del Departamento </h1>

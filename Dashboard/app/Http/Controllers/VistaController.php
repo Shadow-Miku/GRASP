@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidadorDepartamentos;
+use App\Http\Requests\ValidadorUser;
+use App\Http\Requests\ValidadorTickets;
+use App\Http\Requests\ValidadorAsignados;
 
 class VistaController extends Controller
 {
@@ -30,17 +33,10 @@ class VistaController extends Controller
     public function showRegUsu(){
         return view('admin.regUsu');
     }
-        /* Clientes Adm */
 
-        public function showAdmCli(){
-            return view('admin.admCli');
-        }
-
-        public function showAdmAux(){
-            return view('admin.admAux');
-        }
-
-        /* Auxiliares Adm */
+    public function showAdmUsu(){
+        return view('admin.adminUsu');
+    }
 
     /* Tickets Adm */
 
@@ -64,4 +60,7 @@ class VistaController extends Controller
         return redirect('admin.regDep')->with('confirmacion','Registro de departamento exitoso');
     }
 
+    public function procesarregistroUsuario(ValidadorUser $req){
+        return redirect('admin.regUsu')->with('confirmacion','Registro de usuario exitoso');
+    }
 }

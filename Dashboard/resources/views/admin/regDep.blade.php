@@ -28,7 +28,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nombre del departamento:</label>
-                        <input type="text" class="form-control" name="nombre" value="{{old('departamento')}}">
+                        <input type="text" class="form-control" name="departamento" value="{{old('departamento')}}">
                         <p class="text-primary fst-italic"> {{ $errors->first('departamento') }} </p>
                     </div>
 
