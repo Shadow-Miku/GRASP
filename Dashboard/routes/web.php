@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VistaController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\AsignadosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +18,36 @@ Route::get('/', function () {
 });
 
 Route::get('admin.priAdm',[VistaController::class,'showPriAdm'])->name('priAdm');
-
+/*
+|--------------------------------------------------------------------------
+| CRUD DEPARTAMETOS JEFE
+|--------------------------------------------------------------------------
+*/
 Route::get('admin.regDep',[VistaController::class,'showRegDep'])->name('regDep');
 Route::get('admin.adminDep',[VistaController::class,'showAdmDep'])->name('adminDep');
 
+/*
+|--------------------------------------------------------------------------
+| CRUD USUARIOS JEFE
+|--------------------------------------------------------------------------
+*/
 Route::get('admin.regUsu',[VistaController::class,'showRegUsu'])->name('regUsu');
 Route::get('admin.adminUsu',[VistaController::class,'showAdmUsu'])->name('adminUsu');
+
+/*
+|--------------------------------------------------------------------------
+| ADMINISTRACIÓN Y ASIGNACIÓN TICKETS JEFE
+|--------------------------------------------------------------------------
+*/
+Route::get('admin.adminTic',[VistaController::class,'showAdmTic'])->name('adminTic');
+
+/*
+|--------------------------------------------------------------------------
+| TICKETS CLIENTE
+|--------------------------------------------------------------------------
+*/
+Route::get('cliente.regTic',[VistaController::class,'showRegTic'])->name('regTic');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -79,8 +105,26 @@ Route::delete('admin.adminUsu/{id}',[UserController::class,'destroy'])->name('ad
 
 /*
 |--------------------------------------------------------------------------
+| TICKETS JEFE
+|--------------------------------------------------------------------------
+*/
+
+//index
+Route::get('admin.adminTic',[TicketController::class,'index'])->name('adminTic.index');
+//edit
+Route::get('admin.adminTic/{id}/edit',[TicketController::class,'edit'])->name('adminTic.edit');
+//comentarios y observaciones
+Route::put('admin.adminTic/{id}',[TicketController::class,'update'])->name('adminTic.update');
+//asignar tickets
+
+//idex de tickets asignados
+
+/*
+|--------------------------------------------------------------------------
 | Validadores
 |--------------------------------------------------------------------------
 */
 Route::post('admin.regDep', [VistaController::class,'procesarregistroDeparamento'])->name('RegiDepartamento');
 Route::post('admin.regUsu', [VistaController::class,'procesarregistroUsuario'])->name('RegiUsuario');
+Route::post('admin.asgTic', [VistaController::class,'procesarregistroAsignado'])->name('AsgTicket');
+Route::post('cliente.regTic', [VistaController::class,'procesarregistroTicket'])->name('RegiTicket');

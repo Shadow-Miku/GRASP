@@ -18,7 +18,6 @@ return new class extends Migration
             $table->id('idAsg');
             $table->unsignedBigInteger('encargadoId')->nullable();
             $table->unsignedBigInteger('ticketId')->nullable();
-            $table->string('observacion')->default('Sin observaciones')->nullable();
             $table->timestamps();
             $table->foreign('encargadoId')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('ticketId')->references('idTk')->on('tickets')->onDelete('cascade');

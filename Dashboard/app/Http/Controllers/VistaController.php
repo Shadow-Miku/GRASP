@@ -18,8 +18,10 @@ class VistaController extends Controller
     public function showPriAdm(){
         return view('admin.priAdm');
     }
-    /* Departamento Adm */
 
+
+
+    /* Departamento Adm */
     public function showRegDep(){
         return view('admin.regDep');
     }
@@ -28,8 +30,9 @@ class VistaController extends Controller
         return view('admin.adminDep');
     }
 
-    /* Usuarios Adm */
 
+
+    /* Usuarios Adm */
     public function showRegUsu(){
         return view('admin.regUsu');
     }
@@ -38,29 +41,56 @@ class VistaController extends Controller
         return view('admin.adminUsu');
     }
 
+
+
     /* Tickets Adm */
-
-    public function showRegTik(){
-        return view('admin.regTik');
+    public function showAdmTic(){
+        return view('admin.adminTic');
     }
 
-    public function showAdmTik(){
-        return view('admin.admTik');
+    public function showAsgTic(){
+        return view('admin.asigTic');
     }
+
+
+
+    /* Tickets Auxiliares */
+    public function showCntTic(){
+        return view('auxiliar.contrTic');
+    }
+
+
+    /* Tickets Clientes */
+    public function showRegTic(){
+        return view('cliente.regTic');
+    }
+
+    public function GesTic(){
+        return view('cliente.gestTic');
+    }
+
 
     /*Reportes */
-
     public function showreporte(){
         return view('admin.reporte');
     }
 
-    /* Rutas para procesar registros */
 
+
+    /* Rutas para procesar registros */
     public function procesarregistroDeparamento(ValidadorDepartamentos $req){
         return redirect('admin.regDep')->with('confirmacion','Registro de departamento exitoso');
     }
 
     public function procesarregistroUsuario(ValidadorUser $req){
         return redirect('admin.regUsu')->with('confirmacion','Registro de usuario exitoso');
+    }
+
+    public function procesarregistroAsinado(ValidadorAsignados $req){
+        return redirect('admin.asgTick')->with('confirmacion','Asignamiento del Ticket exitoso');
+    }
+
+    public function procesarregistroTicket(ValidadorTickets $req){
+        return redirect('cliente.regTic')->with('confirmacion','Levantamiento del Ticket exitoso');
     }
 }

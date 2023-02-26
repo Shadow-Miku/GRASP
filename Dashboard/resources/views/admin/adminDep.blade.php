@@ -32,7 +32,7 @@
     <form action="{{route('adminDep.index')}}">
       <input type="search" placeholder="Buscar un departamento..." name="filtrar" class="form-control">
         <button type="submit" class="btn btn-primary">
-          <i class="bi bi-pen"></i> Buscar departamento </button>
+          <i class="bi bi-search"></i> Buscar </button>
     </form>
     
       <div class="container mb-5 mt-5  gap-2">

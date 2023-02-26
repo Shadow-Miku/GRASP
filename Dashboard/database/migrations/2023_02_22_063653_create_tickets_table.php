@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('detalles')->nullable();
             $table->string('respuesta')->default('Sin comentarios')->nullable();
             $table->string('status')->default('Pendiente')->nullable();
+            $table->string('observacion')->default('Sin observaciones')->nullable();
             $table->timestamps();
             $table->foreign('autor')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('departamento')->references('idDep')->on('departamentos')->onDelete('cascade');
