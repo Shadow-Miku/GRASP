@@ -100,7 +100,7 @@
 
                           <li>
 
-                              <a href="  " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Administrar tickets </span> </a>
+                              <a href=" {{route('adminTic.index')}} " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Administrar tickets </span> </a>
 
                           </li>
 
