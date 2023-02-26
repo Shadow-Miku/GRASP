@@ -64,7 +64,7 @@
                     <td>{{$consulta->status}}</td>
 		                <td>{{$consulta->observacion}}</td>
                     <td>
-                    <button class="btn btn-warning" onclick="location.href=' '">
+                    <button class="btn btn-warning" onclick="location.href=' {{route('asigTic.create')}} '">
                     <i class="bi bi-file-earmark-person"></i> Asignar Ticket
                     </button></td>
                     <td>

@@ -44,11 +44,15 @@ class VistaController extends Controller
 
 
     /* Tickets Adm */
-    public function showAdmTic(){
+    public function showAdmTic(){ //adminTic
         return view('admin.adminTic');
     }
 
-    public function showAsgTic(){
+    public function showAdmAsg(){//adminAsg
+        return view('admin.adminAsg');
+    }
+
+    public function showAsgTic(){//asigTic
         return view('admin.asigTic');
     }
 
