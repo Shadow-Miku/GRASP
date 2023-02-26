@@ -6,6 +6,7 @@ use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AsignadoController;
+use App\Http\Controllers\cbdreportes;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,3 +133,7 @@ Route::post('admin.regDep', [VistaController::class,'procesarregistroDeparamento
 Route::post('admin.regUsu', [VistaController::class,'procesarregistroUsuario'])->name('RegiUsuario');
 Route::post('admin.asgTic', [VistaController::class,'procesarregistroAsignado'])->name('AsgTicket');
 Route::post('cliente.regTic', [VistaController::class,'procesarregistroTicket'])->name('RegiTicket');
+
+
+Route::get('/imprimir', [cbdreportes::class, 'imprimir']);
+Route::get('/imprimir2', [cbdreportes::class, 'imprimidor']);
