@@ -5,7 +5,7 @@ use App\Http\Controllers\VistaController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
-use App\Http\Controllers\AsignadosController;
+use App\Http\Controllers\AsignadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,7 +105,7 @@ Route::delete('admin.adminUsu/{id}',[UserController::class,'destroy'])->name('ad
 
 /*
 |--------------------------------------------------------------------------
-| TICKETS JEFE
+| TICKETS JEFE, GESTION Y ASIGNACIÓN
 |--------------------------------------------------------------------------
 */
 
@@ -115,9 +115,13 @@ Route::get('admin.adminTic',[TicketController::class,'index'])->name('adminTic.i
 Route::get('admin.adminTic/{id}/edit',[TicketController::class,'edit'])->name('adminTic.edit');
 //comentarios y observaciones
 Route::put('admin.adminTic/{id}',[TicketController::class,'update'])->name('adminTic.update');
-//asignar tickets
 
-//idex de tickets asignados
+//asignar tickets crete
+Route::get('admin.asigTic/create',[AsignadoController::class,'create'])->name('asigTic.create');
+//asignar tickets store
+Route::post('admin.asigTic',[AsignadoController::class,'store'])->name('asigTic.store');
+//index de tickets asignados
+Route::get('admin.adminAsg',[AsignadoController::class,'index'])->name('adminAsg.index');
 
 /*
 |--------------------------------------------------------------------------

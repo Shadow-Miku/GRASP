@@ -104,6 +104,12 @@
 
                           </li>
 
+                          <li>
+
+                              <a href=" {{route('adminAsg.index')}} " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Administrar asignaciones </span> </a>
+
+                          </li>
+
                       </ul>
 
                   </li>
