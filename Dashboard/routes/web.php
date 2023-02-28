@@ -137,3 +137,5 @@ Route::post('cliente.regTic', [VistaController::class,'procesarregistroTicket'])
 
 Route::get('/imprimir', [cbdreportes::class, 'imprimir']);
 Route::get('/imprimir2', [cbdreportes::class, 'imprimidor']);
+Route::get('/imprimir3', [cbdreportes::class, 'imprimidor1']);
+Route::get('/imprimir4', [cbdreportes::class, 'imprimidor2']);
