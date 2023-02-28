@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('admin.priAdm',[VistaController::class,'showPriAdm'])->name('priAdm');
+Route::get('auxiliar.priAux',[VistaController::class,'showPriAux'])->name('priAux');
+Route::get('cliente.priCli',[VistaController::class,'showPriCli'])->name('priCli');
 /*
 |--------------------------------------------------------------------------
 | CRUD DEPARTAMETOS JEFE
@@ -124,6 +126,16 @@ Route::post('admin.asigTic',[AsignadoController::class,'store'])->name('asigTic.
 //index de tickets asignados
 Route::get('admin.adminAsg',[AsignadoController::class,'index'])->name('adminAsg.index');
 
+
+/*
+|--------------------------------------------------------------------------
+| AXILIAR
+|--------------------------------------------------------------------------
+*/
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Validadores
@@ -134,6 +146,10 @@ Route::post('admin.regUsu', [VistaController::class,'procesarregistroUsuario'])-
 Route::post('admin.asgTic', [VistaController::class,'procesarregistroAsignado'])->name('AsgTicket');
 Route::post('cliente.regTic', [VistaController::class,'procesarregistroTicket'])->name('RegiTicket');
 
-
+/*
+|--------------------------------------------------------------------------
+| PDF'S
+|--------------------------------------------------------------------------
+*/
 Route::get('/imprimir', [cbdreportes::class, 'imprimir']);
 Route::get('/imprimir2', [cbdreportes::class, 'imprimidor']);
