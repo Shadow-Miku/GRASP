@@ -35,6 +35,43 @@ class cbdreportes extends Controller
         return $pdf->stream('reporteDepartamentos.pdf');
     }
 
+    public function imprimidor1(Request $request){
+        $filtrar = $request->get('filtrar');
+
+        $consultaTic = DB::table('tickets')
+        ->join('users', 'tickets.autor', '=', 'users.id')
+        ->join('departamentos', 'tickets.departamento', '=', 'departamentos.idDep')
+        ->where('tickets.status', 'like', '%' . $filtrar . '%')
+        ->orWhere('tickets.clasificacion', 'like', '%' . $filtrar . '%')
+        ->orWhere('departamentos.departamento', 'like', '%' . $filtrar . '%')
+        ->orWhere('users.name', 'like', '%' . $filtrar . '%')
+        ->orWhere('tickets.created_at', 'like', '%' . $filtrar . '%')
+        ->select('tickets.*', 'users.name as autor_name', 'departamentos.departamento')
+        ->get();
+
+        $Consulta= DB::table('tickets')->get();
+        $pdf = \PDF::loadView('admin.reportetickets',compact('consultaTic','Consulta','filtrar'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('reporte de Tickets.pdf');
+    }
+
+    public function imprimidor2(Request $request){
+        $filtrar = $request->get('filtrar');
+
+        $consultaAsg = DB::table('asignados')
+        ->join('users', 'asignados.encargadoId', '=', 'users.id')
+        ->join('tickets', 'asignados.ticketId', '=', 'tickets.idTk')
+        ->select('asignados.idAsg', 'users.name as encargado', 'tickets.detalles', 'asignados.created_at')
+        ->where('users.name', 'like', '%' . $filtrar . '%')
+        ->orWhere('asignados.created_at', 'like', '%' . $filtrar . '%')
+        ->orWhere('tickets.detalles','like','%'.$filtrar.'%')
+        ->get();
+        $pdf = \PDF::loadView('admin.reporteasig',compact('filtrar','consultaAsg'));
+        return $pdf->stream('reporte de Asignaciones.pdf');
+    }
+    
+
+
     public function index()
     {
         //

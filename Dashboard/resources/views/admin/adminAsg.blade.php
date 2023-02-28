@@ -57,7 +57,7 @@
                   @endforeach
     
         </table>
-        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#" onclick="location.href='#'">
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#" onclick="location.href='/imprimir4'">
           <i class="bi bi-file-pdf"></i>  Generar Reporte
         </button>
         </div>
