@@ -10,7 +10,7 @@ use App\Http\Requests\ValidadorAsignados;
 
 class VistaController extends Controller
 {
-   
+
     public function showWelcome(){
         return view('Welcome');
     }
@@ -19,6 +19,13 @@ class VistaController extends Controller
         return view('admin.priAdm');
     }
 
+    public function showPriAux(){
+       return view('auxiliar.priAux');
+    }
+
+    public function showPriCli(){
+        return view('cliente.priCli');
+    }
 
 
     /* Departamento Adm */
@@ -55,7 +62,6 @@ class VistaController extends Controller
     public function showAsgTic(){//asigTic
         return view('admin.asigTic');
     }
-
 
 
     /* Tickets Auxiliares */
