@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\ValidadorUser;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    
+
     public function index(Request $request)
     {
         $filtrar = $request->get('filtrar');
@@ -21,8 +23,8 @@ class UserController extends Controller
         ->get();
 
         $Consulta= DB::table('users')->get();
-        
-        return view('admin.adminUsu',compact('consultaUsu','Consulta','filtrar'));    
+
+        return view('admin.adminUsu',compact('consultaUsu','Consulta','filtrar'));
     }
 
     public function create()
@@ -36,7 +38,7 @@ class UserController extends Controller
             "name"=> $request->input('name'),
             "email"=> $request->input('email'),
             "username"=> $request->input('username'),
-            "password"=> $request->input('password'),
+            "password"=> Hash::make($request->input('password')),
             "roll"=> $request->input('roll'),
             "created_at"=> Carbon::now(),
             "updated_at"=> Carbon::now()
@@ -62,7 +64,7 @@ class UserController extends Controller
             "name"=> $request->input('name'),
             "email"=> $request->input('email'),
             "username"=> $request->input('username'),
-            "password"=> $request->input('password'),
+            "password"=> Hash::make($request->input('password')),
             "roll"=> $request->input('roll'),
             "updated_at"=> Carbon::now()
         ]);
