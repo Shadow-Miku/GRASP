@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AsignadoController;
 use App\Http\Controllers\cbdreportes;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\cbdreportes;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('welcome',[LoginController::class,'show']);
+Route::post('welcome',[LoginController::class,'login']);
 
 Route::get('admin.priAdm',[VistaController::class,'showPriAdm'])->name('priAdm');
 Route::get('auxiliar.priAux',[VistaController::class,'showPriAux'])->name('priAux');
