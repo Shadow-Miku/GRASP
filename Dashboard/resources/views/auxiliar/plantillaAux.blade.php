@@ -11,6 +11,7 @@
 
     <title>Dashboard</title>
 
+
 </head>
 
 <body class="bg-blue">
@@ -54,13 +55,13 @@
                   <li>
                       <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
 
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline"> Registrar </span> </a>
+                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline"> Tickets </span> </a>
 
                           <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
 
                           <li>
 
-                            <a href="  " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Gestión de tickets </span> </a>
+                            <a href="  {{route('contrTic.index')}}  " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Gestión de tickets </span> </a>
 
                           </li>
 
@@ -73,15 +74,15 @@
 
               <div class="dropdown pb-4">
                   <a href="  " class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="https://avatars.githubusercontent.com/u/108553512?v=4" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                      <span class="d-none d-sm-inline mx-1"> Auxiliar de soporte </span>
+                      <img src="/img/D3LIPCdWAAAYCzW.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                      <span class="d-none d-sm-inline mx-1"> {{ auth()->user()->name }}  </span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                       <!--<li><a class="dropdown-item" href="#">New project...</a></li>-->
 
                       <!--<li><a class="dropdown-item" href="#">Settings</a></li>-->
 
-                      <li><a class="dropdown-item" href=" ">Perfil</a></li>
+                      <li><a class="dropdown-item" href=" {{route('perfilAux.edit',$id = auth()->user()->id)}} ">Perfil</a></li>
 
                       <li>
 

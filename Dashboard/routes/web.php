@@ -110,6 +110,7 @@ Route::get('admin.adminUsu/{id}/show',[UserController::class,'show'])->name('adm
 //destroy
 Route::delete('admin.adminUsu/{id}',[UserController::class,'destroy'])->name('adminUsu.destroy');
 
+
 /*
 |--------------------------------------------------------------------------
 | TICKETS JEFE, GESTION Y ASIGNACIÓN
@@ -136,8 +137,20 @@ Route::get('admin.adminAsg',[AsignadoController::class,'index'])->name('adminAsg
 | AXILIAR
 |--------------------------------------------------------------------------
 */
+//Index Tickets
+Route::get('auxiliar.contrTic',[TicketController::class,'indexAux'])->name('contrTic.index');
 
+//Edit Tickets
+Route::get('auxiliar.contrTic/{id}/edit',[TicketController::class,'editAux'])->name('contrTic.edit');
 
+//Update Tickets
+Route::put('auxiliar.contrTic/{id}',[TicketController::class,'updateAux'])->name('contrTic.update');
+
+//Edit Nombre
+Route::get('auxiliar.perfilAux/{id}/edit',[UserController::class,'editnameAux'])->name('perfilAux.edit');
+
+//Update Nombre
+Route::put('auxiliar.perfilAux/{id}',[UserController::class,'updatenameAux'])->name('perfilAux.update');
 
 
 /*

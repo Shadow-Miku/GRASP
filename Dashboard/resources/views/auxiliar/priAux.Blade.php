@@ -13,7 +13,7 @@
     </head>
 
     <body>
-        <h1 align="center"> Bienvenido </h1> <br>
+        <h1 align="center"> Bienvenid@ {{ auth()->user()->name }}  </h1> <br>
 
         <main class="main columns">
             <section class="column main-column">
