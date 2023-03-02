@@ -9,11 +9,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       
+
     </head>
 
     <body>
-        <h1 align="center"> Bienvenido </h1> <br>
+        <h1 align="center"> Bienvenid@ {{ auth()->user()->name }}  </h1> <br>
 
         <main class="main columns">
             <section class="column main-column">
@@ -27,7 +27,7 @@
                   </h2>
                   <p class="article-content">
                   Después de buscar a lo largo y ancho del planeta, hemos elegido a la superheroína que lucha para eliminar la violencia en la escuela: ¡Cipta!
-                  Cipta, Rajwa para sus compañeros, es una niña de 15 años que es capaz de convertir sus dibujos en objetos de la vida real y utilizarlos para detener la violencia en las escuelas.  
+                  Cipta, Rajwa para sus compañeros, es una niña de 15 años que es capaz de convertir sus dibujos en objetos de la vida real y utilizarlos para detener la violencia en las escuelas.
                   En cuanto entra a una escuela en la que abunda el acoso, Rajwa descubre a dos niñas acorralando a otra niña en un salón de clase vacío. Parece que después de haberla humillado durante todo el verano por internet, estas acosadoras están dispuestas a dar un paso más. Sin duda, esta es una tarea para Cipta, pero primero tendrá que enfrentarse a un dragón de tres cabezas, a un ogro y a un monstruo de piedra. ¿Existe algún poder más perverso detrás de todo esto? Cipta, cuyos poderes solo están limitados por su imaginación, debe usar todo su ingenio y empatía para derrotar a la fuerza invisible responsable y restablecer la paz.
                   </p>
                   <footer class="article-info">
@@ -36,7 +36,7 @@
                   </footer>
                 </div>
               </a>
-          
+
               <div class="columns">
                 <div class="column nested-column">
                   <a class="article" href="https://aweita.larepublica.pe/anime-manga-y-comics/2021/08/24/kaijuu-no8-oshi-ko-se-consagran-como-ganadores-next-manga-awards-2021-7052">
@@ -48,8 +48,8 @@
                         Especiales del mundo de anime
                       </h2>
                       <p class="article-content">
-                      El día de hoy se dieron a conocer los ganadores del gran premio ‘Next Manga Awards 2021’, 
-                      entregado por Da Vinci y el conocido portal Nico Nico. Este año la lista de nominados contaba con varios 
+                      El día de hoy se dieron a conocer los ganadores del gran premio ‘Next Manga Awards 2021’,
+                      entregado por Da Vinci y el conocido portal Nico Nico. Este año la lista de nominados contaba con varios
                       nombres de mangas importantes tanto en la categoría web como en la impresa,
                       siendo el mas destacados el reciente éxito de la editorial Shueisha, Kaijuu No. 8.
                       </p>
@@ -60,7 +60,7 @@
                     </div>
                   </a>
                 </div>
-          
+
                 <div class="column">
                   <a class="article" href="https://www.emaze.com/@ACQITRIZ">
                     <figure class="article-image is-16by9">
@@ -68,7 +68,7 @@
                     </figure>
                     <div class="article-body">
                       <h2 class="article-title">
-                        Como los libros han ayudado a la libertad de expresión 
+                        Como los libros han ayudado a la libertad de expresión
                       </h2>
                       <p class="article-content">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -110,7 +110,7 @@
                 </div>
               </div>
             </section>
-          
+
             <section class="column">
               <a class="article" href="https://es.resonancescience.org/blog/masa-negativa-creada-en-la-universidad-estatal-de-washington">
                 <figure class="article-image is-3by2">
@@ -121,9 +121,9 @@
                     La masa negativa
                   </h2>
                   <p class="article-content">
-                  Físicos de la Universidad Estatal de Washington han creado un fluido con masa negativa, 
-                  que es exactamente lo que su naturaleza indica: si lo empujas, 
-                  no se acelera en la dirección en la que fue empujado, 
+                  Físicos de la Universidad Estatal de Washington han creado un fluido con masa negativa,
+                  que es exactamente lo que su naturaleza indica: si lo empujas,
+                  no se acelera en la dirección en la que fue empujado,
                   se acelera hacia atrás, a diferencia de todos los objetos físicos del mundo que conocemos.
                   </p>
 
@@ -181,7 +181,7 @@
             </section>
           </main>
     </body>
-    
+
 </html>
 
 

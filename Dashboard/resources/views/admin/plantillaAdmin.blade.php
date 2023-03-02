@@ -42,7 +42,7 @@
                   <li class="nav-item">
 
 
-                      <a href=" {{route('priAdm')}} " class="nav-link align-middle px-0"> 
+                      <a href=" {{route('priAdm')}} " class="nav-link align-middle px-0">
 
                           <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline"> Menu </span>
                       </a>
@@ -73,8 +73,8 @@
                       </ul>
                   </li>
 
-        
-                 
+
+
                   <!-- submenu de administración -->
 
                   <li>
@@ -145,8 +145,8 @@
 
               <div class="dropdown pb-4">
                   <a href="  " class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="https://avatars.githubusercontent.com/u/108553512?v=4" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                      <span class="d-none d-sm-inline mx-1"> Jefe soporte </span>
+                      <img src="https://pbs.twimg.com/media/Dxu_L59XQAAllPq.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                      <span class="d-none d-sm-inline mx-1"> {{ auth()->user()->name }}  </span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                       <!--<li><a class="dropdown-item" href="#">New project...</a></li>-->
@@ -192,15 +192,15 @@
 
 <div class="alert alert-success" role="alert">
 
-  Macuin Dashboards.   <?php  echo date('Y');?> Copyrigth® 
-  
-  <?php 
+  Macuin Dashboards.   <?php  echo date('Y');?> Copyrigth®
+
+  <?php
   date_default_timezone_set('America/Mexico_City');
 
   $fechaActual = date('d/m/y h:i:s');
 
   echo "$fechaActual <br>";
-  
+
   ?>
 
 </div>

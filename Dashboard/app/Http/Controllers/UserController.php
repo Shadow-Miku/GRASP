@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use app\Models\User;
+use Svg\Tag\Rect;
 
 class UserController extends Controller
 {
@@ -77,5 +79,20 @@ class UserController extends Controller
         DB::table('users')->where('id',$id)->delete();
 
         return redirect('admin.adminUsu')->with('elimina','abc');
+    }
+
+    public function editnameAux()
+    {
+        $user = auth()->user()->id;
+        return view('auxiliar.perfilAux', ['user' => $user]);
+    }
+
+    public function updatenameAux(Request $request, $id)
+    {
+        DB::table('users')->where('id',$id)->update([
+            "name"=> $request->input('name'),
+            "updated_at"=> Carbon::now()
+        ]);
+        return redirect('auxiliar.priAux');
     }
 }
