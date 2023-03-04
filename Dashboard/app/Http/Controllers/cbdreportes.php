@@ -21,7 +21,7 @@ class cbdreportes extends Controller
         ->get();
 
         $Consulta= DB::table('users')->get();
-        
+
         $pdf = \PDF::loadView('admin.reporteusuarios',compact('consultaUsu','Consulta','filtrar'));
         return $pdf->stream('reporteUsuarios.pdf');
     }
@@ -30,7 +30,7 @@ class cbdreportes extends Controller
         $filtrar = $request->get('filtrar');
         $consultaDep = DB::table('departamentos')->where('departamento','like','%'.$filtrar.'%')->get();
         $ConsultaD= DB::table('departamentos')->get();
-        
+
         $pdf = \PDF::loadView('admin.reportedepa',compact('ConsultaD','consultaDep','filtrar'));
         return $pdf->stream('reporteDepartamentos.pdf');
     }
@@ -69,78 +69,57 @@ class cbdreportes extends Controller
         $pdf = \PDF::loadView('admin.reporteasig',compact('filtrar','consultaAsg'));
         return $pdf->stream('reporte de Asignaciones.pdf');
     }
-    
+
+    public function imprimidor3(Request $request){
+        $filtrar = $request->get('filtrar');
+
+        $consultaSem1 = DB::table('tickets')
+        ->join('users', 'tickets.autor', '=', 'users.id')
+        ->join('departamentos', 'tickets.departamento', '=', 'departamentos.idDep')
+        ->join('asignados', 'tickets.idTk', '=', 'asignados.ticketId')
+        ->where('asignados.encargadoId', '=', auth()->user()->id)
+        ->where(function($query) use ($filtrar) {
+            $query->where('tickets.status', 'like', '%' . $filtrar . '%')
+                  ->orWhere('tickets.clasificacion', 'like', '%' . $filtrar . '%')
+                  ->orWhere('departamentos.departamento', 'like', '%' . $filtrar . '%')
+                  ->orWhere('users.name', 'like', '%' . $filtrar . '%')
+                  ->orWhere('tickets.created_at', 'like', '%' . $filtrar . '%');
+        })
+        ->whereBetween('tickets.created_at', ['2023-01-01', '2023-06-30'])
+        ->select('tickets.*', 'users.name as autor_name', 'departamentos.departamento')
+        ->get();
 
 
-    public function index()
-    {
-        //
-        
+        $pdf = \PDF::loadView('auxiliar.reportexsemestre1',compact('filtrar','consultaSem1'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('reporte del primer semestre.pdf');
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function imprimidor4(Request $request){
+        $filtrar = $request->get('filtrar');
+        $user = auth()->user()->id;
+
+        $consultaSem2 = DB::table('tickets')
+        ->join('users', 'tickets.autor', '=', 'users.id')
+        ->join('departamentos', 'tickets.departamento', '=', 'departamentos.idDep')
+        ->join('asignados', 'tickets.idTk', '=', 'asignados.ticketId')
+        ->where('asignados.encargadoId', '=', auth()->user()->id)
+        ->where(function($query) use ($filtrar) {
+            $query->where('tickets.status', 'like', '%' . $filtrar . '%')
+                  ->orWhere('tickets.clasificacion', 'like', '%' . $filtrar . '%')
+                  ->orWhere('departamentos.departamento', 'like', '%' . $filtrar . '%')
+                  ->orWhere('users.name', 'like', '%' . $filtrar . '%')
+                  ->orWhere('tickets.created_at', 'like', '%' . $filtrar . '%');
+        })
+        ->whereBetween('tickets.created_at', ['2023-07-01', '2023-12-30'])
+        ->select('tickets.*', 'users.name as autor_name', 'departamentos.departamento')
+        ->get();
+
+        $pdf = \PDF::loadView('auxiliar.reportexsemestre2',compact('filtrar','consultaSem2','user'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('reporte del segundo semestre.pdf');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
