@@ -39,17 +39,25 @@ class TicketController extends Controller
         $consultaTic = DB::table('tickets')
         ->join('users', 'tickets.autor', '=', 'users.id')
         ->join('departamentos', 'tickets.departamento', '=', 'departamentos.idDep')
-        ->where('tickets.status', 'like', '%' . $filtrar . '%')
-        ->orWhere('tickets.clasificacion', 'like', '%' . $filtrar . '%')
-        ->orWhere('departamentos.departamento', 'like', '%' . $filtrar . '%')
-        ->orWhere('users.name', 'like', '%' . $filtrar . '%')
-        ->orWhere('tickets.created_at', 'like', '%' . $filtrar . '%')
+        ->join('asignados', 'tickets.idTk', '=', 'asignados.ticketId')
+        ->where('asignados.encargadoId', '=', auth()->user()->id)
+        ->where(function($query) use ($filtrar) {
+            $query->where('tickets.status', 'like', '%' . $filtrar . '%')
+                  ->orWhere('tickets.clasificacion', 'like', '%' . $filtrar . '%')
+                  ->orWhere('departamentos.departamento', 'like', '%' . $filtrar . '%')
+                  ->orWhere('users.name', 'like', '%' . $filtrar . '%')
+                  ->orWhere('tickets.created_at', 'like', '%' . $filtrar . '%');
+        })
         ->select('tickets.*', 'users.name as autor_name', 'departamentos.departamento')
         ->get();
 
         $Consulta= DB::table('tickets')->get();
         return view('auxiliar.contrTic',compact('consultaTic','Consulta','filtrar'));
 
+    }
+
+    public function indexCli(){
+        //
     }
 
     public function create()
@@ -66,6 +74,9 @@ class TicketController extends Controller
     {
         //
     }
+
+
+
     //edit JEFE
     public function edit($id)
     {

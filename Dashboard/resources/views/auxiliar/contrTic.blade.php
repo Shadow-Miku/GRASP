@@ -31,10 +31,18 @@
 
       <form action=" {{route('contrTic.index')}} ">
           <input type="search" placeholder="Buscar tickets..." name="filtrar" class="form-control">
-            <button type="submit" class="btn btn-primary">
-              <i class="bi bi-search"></i> Buscar </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-search"></i> Buscar </button>
       </form>
-
+      <br>
+      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#" onclick="location.href='/imprimir5' ">
+        <i class="bi bi-file-pdf"></i>  Generar reporte primer semestre
+      </button>
+      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#" onclick="location.href='/imprimir6' ">
+        <i class="bi bi-file-pdf"></i>  Generar reporte segundo semestre
+      </button>
+        <br>
+        <br>
           <table class="table table-borderless table-striped table-hover" >
             <thead>
               <tr>
@@ -77,10 +85,6 @@
               @endforeach
           </table>
 
-
-          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#" onclick="location.href='/imprimir3'">
-          <i class="bi bi-file-pdf"></i>  Generar Reporte
-        </button>
         </div>
     </div>
 
