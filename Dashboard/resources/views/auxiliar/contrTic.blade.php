@@ -41,6 +41,12 @@
       <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#" onclick="location.href='/imprimir6' ">
         <i class="bi bi-file-pdf"></i>  Generar reporte segundo semestre
       </button>
+      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#" onclick="location.href='/imprimir7' ">
+        <i class="bi bi-file-pdf"></i>  Generar reportes x departamento
+      </button>
+      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#" onclick="location.href='/imprimir8' ">
+        <i class="bi bi-file-pdf"></i>  Generar reportes x status
+      </button>
         <br>
         <br>
           <table class="table table-borderless table-striped table-hover" >
