@@ -172,5 +172,8 @@ Route::get('/imprimir', [cbdreportes::class, 'imprimir']);
 Route::get('/imprimir2', [cbdreportes::class, 'imprimidor']);
 Route::get('/imprimir3', [cbdreportes::class, 'imprimidor1']);
 Route::get('/imprimir4', [cbdreportes::class, 'imprimidor2']);
+//PDF's del auxiliar
 Route::get('/imprimir5', [cbdreportes::class, 'imprimidor3']);
 Route::get('/imprimir6', [cbdreportes::class, 'imprimidor4']);
+Route::get('/imprimir7', [cbdreportes::class, 'imprimidor5']);
+Route::get('/imprimir8', [cbdreportes::class, 'imprimidor6']);
