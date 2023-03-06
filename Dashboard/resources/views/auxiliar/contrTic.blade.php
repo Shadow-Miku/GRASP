@@ -61,8 +61,7 @@
                     <th scope="col">Respuesta</th>
                     <th scope="col">Status</th>
         		    <th scope="col">Observación</th>
-                    <th scope="col">Acción 1</th>
-        		    <th scope="col">Acción 2</th>
+                    <th scope="col">Comunicación y cambio de estado</th>
               </tr>
             </thead>
 
@@ -79,12 +78,8 @@
                     <td>{{$consulta->status}}</td>
 		            <td>{{$consulta->observacion}}</td>
                     <td>
-                    <button class="btn btn-warning" onclick="location.href=' {{route('asigTic.create')}} '">
-                    <i class="bi bi-file-earmark-person"></i>a
-                    </button></td>
-                    <td>
                     <button type="button" class="btn btn-light" onclick="location.href=' {{route('contrTic.edit', $consulta->idTk)}} '">
-                    <i class="bi bi-vector-pen"></i>   Cambiar status
+                    <i class="bi bi-vector-pen"></i>   Atender ticket
                     </button></td>
               </tr>
             </tbody>
