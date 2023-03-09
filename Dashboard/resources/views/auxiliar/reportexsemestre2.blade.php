@@ -26,7 +26,7 @@
 
 </head>
 <body>
-<h2>Reporte ticekts asignados en el primer semestre</h2>
+<h2>Reporte ticekts asignados en el segundo semestre</h2>
 
 <div>
 <table class="table table-borderless table-striped table-hover" >

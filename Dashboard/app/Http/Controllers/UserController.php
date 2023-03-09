@@ -95,4 +95,19 @@ class UserController extends Controller
         ]);
         return redirect('auxiliar.priAux');
     }
+
+    public function editnameCli()
+    {
+        $user = auth()->user()->id;
+        return view('cliente.perfilCli', ['user' => $user]);
+    }
+
+    public function updatenameCli(Request $request, $id)
+    {
+        DB::table('users')->where('id',$id)->update([
+            "name"=> $request->input('name'),
+            "updated_at"=> Carbon::now()
+        ]);
+        return redirect('cliente.priCli');
+    }
 }
