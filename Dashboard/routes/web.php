@@ -155,6 +155,20 @@ Route::put('auxiliar.perfilAux/{id}',[UserController::class,'updatenameAux'])->n
 
 /*
 |--------------------------------------------------------------------------
+| CLIENTE
+|--------------------------------------------------------------------------
+*/
+
+//Edit Nombre
+Route::get('cliente.perfilCli/{id}/edit',[UserController::class,'editnameCli'])->name('perfilCli.edit');
+
+//Update Nombre
+Route::put('cliente.perfilCli/{id}',[UserController::class,'updatenameCli'])->name('perfilCli.update');
+
+
+
+/*
+|--------------------------------------------------------------------------
 | Validadores
 |--------------------------------------------------------------------------
 */

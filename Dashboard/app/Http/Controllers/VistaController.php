@@ -75,8 +75,8 @@ class VistaController extends Controller
         return view('cliente.regTic');
     }
 
-    public function GesTic(){
-        return view('cliente.gestTic');
+    public function ConTic(){
+        return view('cliente.consTic');
     }
 
 
