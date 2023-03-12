@@ -261,4 +261,37 @@ class cbdreportes extends Controller
         return response()->download($zipName)->deleteFileAfterSend(true);
     }
 
+    public function buscarPorFecha(Request $request){
+        //Obtener las fechas ingresadas por el usuario desde el formulario
+        $fecha_inicio = $request->input('fecha_inicio');
+        $fecha_fin = $request->input('fecha_fin');
+
+        $filtrar = $request->get('filtrar');
+
+        $consultaSem1 = DB::table('tickets')
+        ->join('users', 'tickets.autor', '=', 'users.id')
+        ->join('departamentos', 'tickets.departamento', '=', 'departamentos.idDep')
+        ->join('asignados', 'tickets.idTk', '=', 'asignados.ticketId')
+        ->where('asignados.encargadoId', '=', auth()->user()->id)
+        ->where(function($query) use ($filtrar) {
+            $query->where('tickets.status', 'like', '%' . $filtrar . '%')
+                  ->orWhere('tickets.clasificacion', 'like', '%' . $filtrar . '%')
+                  ->orWhere('departamentos.departamento', 'like', '%' . $filtrar . '%')
+                  ->orWhere('users.name', 'like', '%' . $filtrar . '%')
+                  ->orWhere('tickets.created_at', 'like', '%' . $filtrar . '%');
+        })
+        ->whereBetween('tickets.created_at', [$fecha_inicio, $fecha_fin])
+        ->select('tickets.*', 'users.name as autor_name', 'departamentos.departamento')
+        ->get();
+
+        $pdf = \PDF::loadView('auxiliar.reportexsemestre1',compact('filtrar','consultaSem1'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->stream('reporte x fecha solicitada.pdf');
+    }
+
+    public function mostrarFormulario()
+    {
+    return view('auxiliar.buscarTicket');
+    }
+
 }
