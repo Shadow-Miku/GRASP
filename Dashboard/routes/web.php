@@ -152,6 +152,10 @@ Route::get('auxiliar.perfilAux/{id}/edit',[UserController::class,'editnameAux'])
 //Update Nombre
 Route::put('auxiliar.perfilAux/{id}',[UserController::class,'updatenameAux'])->name('perfilAux.update');
 
+Route::get('auxiliar.buscar-tickets', [cbdreportes::class,'mostrarFormulario'])->name('mostrar-formulario');
+
+Route::post('auxiliar.buscar-tickets',[cbdreportes::class,'buscarPorFecha'])->name('buscar-tickets');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -191,3 +195,5 @@ Route::get('/imprimir5', [cbdreportes::class, 'imprimidor3']);
 Route::get('/imprimir6', [cbdreportes::class, 'imprimidor4']);
 Route::get('/imprimir7', [cbdreportes::class, 'imprimidor5']);
 Route::get('/imprimir8', [cbdreportes::class, 'imprimidor6']);
+
+

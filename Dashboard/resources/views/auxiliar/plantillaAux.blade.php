@@ -65,6 +65,12 @@
 
                           </li>
 
+                          <li>
+
+                            <a href=" {{route('mostrar-formulario')}} " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Reporte por fecha </span> </a>
+
+                          </li>
+
                       </ul>
                   </li>
 

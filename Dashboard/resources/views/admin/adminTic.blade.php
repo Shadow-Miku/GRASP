@@ -7,7 +7,7 @@
             'Siuuuuuuuu!',
             'Ticket actualizado',
             'success'
-          ) </script>"!!}        
+          ) </script>"!!}
 @endif
 
 @if (session()->has('elimina'))
@@ -15,7 +15,7 @@
             'F',
             'Ticket eliminado',
             'success'
-          ) </script>"!!}        
+          ) </script>"!!}
 @endif
 
 @if (session()->has('confirmacion'))
@@ -23,7 +23,7 @@
             'Siuuuuuuuu!',
             'Ticket registrado',
             'success'
-          ) </script>"!!}        
+          ) </script>"!!}
     @endif
 
     <h1 class="display-1 mt-4 mb-4 text-center"> Tickets registrados </h1>
@@ -33,7 +33,7 @@
             <button type="submit" class="btn btn-primary">
               <i class="bi bi-search"></i> Buscar </button>
       </form>
-  
+
           <table class="table table-borderless table-striped table-hover" >
             <thead>
               <tr>
@@ -54,25 +54,32 @@
             <tbody>
               @foreach ($consultaTic as $consulta)
                 <tr>
-                    <th scope="row">{{$consulta->idTk}}</th>  
-                    <td>{{$consulta->autor_name}}</td> 
-                    <td>{{$consulta->departamento}}</td> 
+                    <th scope="row">{{$consulta->idTk}}</th>
+                    <td>{{$consulta->autor_name}}</td>
+                    <td>{{$consulta->departamento}}</td>
                     <td>{{$consulta->clasificacion}}</td>
-                    <td>{{$consulta->detalles}}</td> 
-                    <td>{{$consulta->created_at}}</td>  
+                    <td>{{$consulta->detalles}}</td>
+                    <td>{{$consulta->created_at}}</td>
                     <td>{{$consulta->respuesta}}</td>
                     <td>{{$consulta->status}}</td>
-		                <td>{{$consulta->observacion}}</td>
+		            <td>{{$consulta->observacion}}</td>
                     <td>
-                    <button class="btn btn-warning" onclick="location.href=' {{route('asigTic.create')}} '">
-                    <i class="bi bi-file-earmark-person"></i> Asignar Ticket
-                    </button></td>
+                        @if ($consulta->status != 'Completado')
+                            <button class="btn btn-warning" onclick="location.href=' {{route('asigTic.create')}} '">
+                                <i class="bi bi-file-earmark-person"></i> Asignar Ticket
+                            </button>
+                        @else
+                            <button type="button" class="btn btn-warning" disabled>
+                                <i class="bi bi-file-earmark-person"></i> Asignar Ticket
+                            </button>
+                    </td>
+                    @endif
                     <td>
-                    <button type="button" class="btn btn-danger" onclick="location.href=' {{route('adminTic.edit', $consulta->idTk)}} '">
-                    <i class="bi bi-vector-pen"></i>  Realizar comentarios y observaciones
-                    </button></td>
+                        <button type="button" class="btn btn-danger" onclick="location.href=' {{route('adminTic.edit', $consulta->idTk)}} '">
+                        <i class="bi bi-vector-pen"></i>  Realizar comentarios y observaciones
+                        </button></td>
               </tr>
-            </tbody> 
+            </tbody>
               @endforeach
           </table>
 
@@ -82,5 +89,5 @@
         </button>
         </div>
     </div>
-    
+
 @stop
