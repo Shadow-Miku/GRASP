@@ -41,7 +41,8 @@
 
                 <div class="mb-3">
                         <label for="text" class="form-label">Status:</label>
-                        <select class="form-select" name="status" value="{{old('status')}}" aria-label="Default select example">
+                        <select class="form-select" name="status" id="status" value="{{old('status')}}" aria-label="Default select example">
+
                             <option disabled selected> Seleccione el status del ticket...</option>
                                 <option value="Completado"> Completado </option>
                                 <option value="Asignado"> Asignado </option>
@@ -66,3 +67,4 @@
     </div>
 
 @stop
+
