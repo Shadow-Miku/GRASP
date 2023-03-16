@@ -139,7 +139,40 @@
   ?>
 
 </div>
+<!--Script alerta completado-->
+@section('scripts')
+    <script>
+        // Selecciona el elemento select
+        const select = document.querySelector('#status');
 
+        // Agrega un evento onChange al elemento select
+        select.addEventListener('change', function() {
+            // Si el valor seleccionado es "Completado"
+            if (this.value === 'Completado') {
+                // Muestra la alerta con un mensaje personalizado y un botón para confirmar
+                if (confirm('¿Estás seguro de marcar este ticket como Completado? Una vez registrado así, no podrás realizar más comentarios y cambios.')) {
+                    // Si el usuario confirma, envía el formulario
+                    this.form.submit();
+                } else {
+                    // Si el usuario cancela, selecciona la opción por defecto
+                    this.value = '';
+                }
+            }
+        });
+
+        // Agrega un evento click al documento para cerrar la alerta si se hizo clic fuera de ella
+        document.addEventListener('click', function(event) {
+            if (event.target.closest('.alert')) {
+                return;
+            }
+
+            const alert = document.querySelector('.alert');
+            if (alert) {
+                alert.remove();
+            }
+        });
+    </script>
+@show
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"> </script>
 
