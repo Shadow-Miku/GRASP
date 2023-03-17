@@ -62,13 +62,13 @@
 
                           <li>
 
-                            <a href="  " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Levantar Ticket </span> </a>
+                            <a href=" {{route('regTic.create')}}  " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Levantar Ticket </span> </a>
 
                           </li>
 
 			   <li>
 
-                            <a href="  " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Mis tickets </span> </a>
+                            <a href=" {{route('consTic.indexCli')}} " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Mis tickets </span> </a>
 
                           </li>
 

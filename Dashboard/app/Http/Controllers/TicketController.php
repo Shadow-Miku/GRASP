@@ -56,18 +56,46 @@ class TicketController extends Controller
 
     }
 
-    public function indexCli(){
-        //
+    public function indexCli(Request $request){
+        $filtrar = $request->get('filtrar');
+
+        $consultaTic = DB::table('tickets')
+            ->join('users', 'tickets.autor', '=', 'users.id')
+            ->join('departamentos', 'tickets.departamento', '=', 'departamentos.idDep')
+            ->where('tickets.autor', '=', auth()->user()->id)
+            ->where(function($query) use ($filtrar) {
+                $query->where('tickets.status', 'like', '%' . $filtrar . '%')
+                    ->orWhere('tickets.clasificacion', 'like', '%' . $filtrar . '%')
+                    ->orWhere('departamentos.departamento', 'like', '%' . $filtrar . '%')
+                    ->orWhere('users.name', 'like', '%' . $filtrar . '%')
+                    ->orWhere('tickets.created_at', 'like', '%' . $filtrar . '%');
+            })
+            ->select('tickets.*', 'users.name as autor_name', 'departamentos.departamento')
+            ->get();
+
+        $Consulta= DB::table('tickets')->get();
+        return view('cliente.consTic',compact('consultaTic','Consulta','filtrar'));
+
     }
 
     public function create()
     {
-        //
+        $ConsultaD = departamentos::all();
+        return view('cliente.regTic',compact('ConsultaD'));
     }
 
-    public function store(Request $request)
+    public function store(ValidadorTickets $request)
     {
-        //
+        DB::table('tickets')->insert([
+            "autor"=>$request->input('autor'),
+            "departamento"=>$request->input('departamento'),
+            "clasificacion"=>$request->input('clasificacion'),
+            "detalles"=>$request->input('detalles'),
+            "created_at"=>Carbon::now(),
+            "updated_at"=>Carbon::now()
+        ]);
+
+        return redirect('cliente.consTic')->with('confirmacion','abc');
     }
 
     public function show($id)
