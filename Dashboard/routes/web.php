@@ -53,8 +53,12 @@ Route::get('admin.adminTic',[VistaController::class,'showAdmTic'])->name('adminT
 | TICKETS CLIENTE
 |--------------------------------------------------------------------------
 */
-Route::get('cliente.regTic',[VistaController::class,'showRegTic'])->name('regTic');
+// Create
+Route::get('cliente.regTic/create',[TicketController::class,'create'])->name('regTic.create');
+Route::post('cliente.reg',[TicketController::class,'store'])->name('regTic.store');
 
+// Index
+Route::get('cliente.consTic',[TicketController::class,'indexCli'])->name('consTic.indexCli');
 
 /*
 |--------------------------------------------------------------------------
