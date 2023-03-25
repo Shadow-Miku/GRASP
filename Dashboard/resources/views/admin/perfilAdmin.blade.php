@@ -1,11 +1,11 @@
-@extends('auxiliar.plantillaAux')
+@extends('admin.plantillaAdmin')
 
 @section('contenido')
 
 
     <div class="container mt-5 col-md-6">
 
-        <h1 class="display-1 text-center mb-5"> Actualizar Nombre </h1>
+
 
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
@@ -22,11 +22,11 @@
         <div class="card  mb-5 fw-bold">
 
             <div class="card-header fw-bold">
-                Actualizar mi nombre
+                Actualizar Datos
             </div>
 
             <div class="card-body">
-            <form class="m-4" method="post" action=" {{route('perfilAux.update', $user = auth()->user()->id)}} " enctype="multipart/form-data">
+            <form class="m-4" method="post" action=" {{route('perfilAdmin.update', $user = auth()->user()->id)}} " enctype="multipart/form-data">
                 @csrf
 
                 {!! method_field('PUT')!!}
@@ -41,11 +41,11 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Imagen de perfil</label>
-                    <input class="form-control" type="file" name="fotoaux" accept="image/*">
+                    <input class="form-control" type="file" name="fotoadm" accept="image/*">
                 </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary  m-1"> Actualizar nombre </button>
+                    <button type="submit" class="btn btn-primary  m-1"> Actualizar Datos </button>
             </form>
             </div>
 

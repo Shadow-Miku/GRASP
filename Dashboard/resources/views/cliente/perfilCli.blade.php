@@ -5,7 +5,6 @@
 
     <div class="container mt-5 col-md-6">
 
-        <h1 class="display-1 text-center mb-5"> Actualizar Nombre </h1>
 
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
@@ -26,19 +25,27 @@
             </div>
 
             <div class="card-body">
-            <form class="m-4" method="post" action=" {{route('perfilCli.update', $user = auth()->user()->id)}} ">
+            <form class="m-4" method="post" action=" {{route('perfilCli.update', $user = auth()->user()->id)}} " enctype="multipart/form-data">
                 @csrf
 
                 {!! method_field('PUT')!!}
+                <center>
+                <img src="{{ auth()->user()->url }}" alt="hugenerd" width="250" class="rounded-circle">
+                </center>
                 <div class="mb-3">
                         <label class="form-label">Nombre y apellidos:</label>
                         <input type="text" class="form-control" name="name" value="{{$user = auth()->user()->name}}">
                         <p class="text-primary fst-italic"> {{ $errors->first('name') }} </p>
                     </div>
 
+                <div class="mb-3">
+                    <label class="form-label">Imagen de perfil</label>
+                    <input class="form-control" type="file" name="fotocli" accept="image/*">
+                </div>
+
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary  m-1"> Actualizar nombre </button>
+                    <button type="submit" class="btn btn-primary  m-1"> Actualizar Datos </button>
             </form>
             </div>
 

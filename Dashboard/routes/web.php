@@ -8,6 +8,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AsignadoController;
 use App\Http\Controllers\cbdreportes;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -201,3 +202,8 @@ Route::get('/imprimir7', [cbdreportes::class, 'imprimidor5']);
 Route::get('/imprimir8', [cbdreportes::class, 'imprimidor6']);
 
 
+//Edit Nombre Admin
+Route::get('Admin.perfilAdmin/{id}/edit',[UserController::class,'editnameAdmin'])->name('perfilAdmin.edit');
+
+//Update Nombre Admin
+Route::put('Admin.perfilAdmin/{id}',[UserController::class,'updatenameAdmin'])->name('perfilAdmin.update');
