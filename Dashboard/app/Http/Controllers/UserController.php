@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use app\Models\User;
 use Svg\Tag\Rect;
+use Illuminate\Support\Facades\Storage; 
 
 class UserController extends Controller
 {
@@ -36,12 +37,16 @@ class UserController extends Controller
 
     public function store(ValidadorUser $request)
     {
+        $imagen=$request->file('file')->store('public/img');
+        $url=Storage::url($imagen);
+
         DB::table('users')->insert([
             "name"=> $request->input('name'),
             "email"=> $request->input('email'),
             "username"=> $request->input('username'),
             "password"=> Hash::make($request->input('password')),
             "roll"=> $request->input('roll'),
+            "url"=>$url,
             "created_at"=> Carbon::now(),
             "updated_at"=> Carbon::now()
         ]);
@@ -89,9 +94,13 @@ class UserController extends Controller
 
     public function updatenameAux(Request $request, $id)
     {
+        $imagen=$request->file('fotoaux')->store('public/img');
+        $url=Storage::url($imagen);
+        
         DB::table('users')->where('id',$id)->update([
             "name"=> $request->input('name'),
-            "updated_at"=> Carbon::now()
+            "url"=>$url,
+            "updated_at"=> Carbon::now()    
         ]);
         return redirect('auxiliar.priAux');
     }
@@ -104,10 +113,34 @@ class UserController extends Controller
 
     public function updatenameCli(Request $request, $id)
     {
+        $imagen=$request->file('fotocli')->store('public/img');
+        $url=Storage::url($imagen);
+
         DB::table('users')->where('id',$id)->update([
             "name"=> $request->input('name'),
+            "url"=>$url,
             "updated_at"=> Carbon::now()
         ]);
         return redirect('cliente.priCli');
     }
+
+    public function editnameAdmin()
+    {
+        $user = auth()->user()->id;
+        return view('admin.perfilAdmin', ['user' => $user]);
+    }
+
+    public function updatenameAdmin(Request $request, $id)
+    {
+        $imagen=$request->file('fotoadm')->store('public/img');
+        $url=Storage::url($imagen);
+        
+        DB::table('users')->where('id',$id)->update([
+            "name"=> $request->input('name'),
+            "url"=>$url,
+            "updated_at"=> Carbon::now()    
+        ]);
+        return redirect('admin.priAdm');
+    }
 }
+

@@ -44,6 +44,7 @@
               <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Nombre</th>
+                  <th scope="col">foto</th>
                   <th scope="col">Email</th>
                   <th scope="col">Usuario</th>
 		              <th scope="col">roll</th>
@@ -57,6 +58,7 @@
                 <tr>
                     <th scope="row">{{$consulta->id}}</th>  
                     <td>{{$consulta->name}}</td> 
+                    <td><img src="{{$consulta->url}}" alt="" width="100"></td> 
                     <td>{{$consulta->email}}</td> 
                     <td>{{$consulta->username}}</td>
                     <td>{{$consulta->roll}}</td>  

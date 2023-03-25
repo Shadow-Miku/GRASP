@@ -118,34 +118,10 @@
 
               <hr>
 
-              <!--enlace testeo tickets-->
-
-              <li>
-                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-
-                    <i class="bi bi-fullscreen"></i> <span class="ms-1 d-none d-sm-inline">Testeo tickets</span> </a>
-
-                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-
-                    <li>
-
-                      <a href="" class="nav-link px-0"> <span class="d-none d-sm-inline">&nbsp; &nbsp; Registrar Ticket</span> </a>
-
-                    </li>
-
-                    <li class="w-100">
-
-                      <a href="" class="nav-link px-0"> <span class="d-none d-sm-inline">&nbsp; &nbsp; Vista ticket auxiliar</span> </a>
-
-                    </li>
-
-                </ul>
-
-            </li>
-
+            
               <div class="dropdown pb-4">
                   <a href="  " class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="https://pbs.twimg.com/media/Dxu_L59XQAAllPq.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                      <img src="{{ auth()->user()->url }} " alt="hugenerd" width="30" height="30" class="rounded-circle">
                       <span class="d-none d-sm-inline mx-1"> {{ auth()->user()->name }}  </span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -153,7 +129,7 @@
 
                       <!--<li><a class="dropdown-item" href="#">Settings</a></li>-->
 
-                      <li><a class="dropdown-item" href="">Perfil</a></li>
+                      <li><a class="dropdown-item" href="{{route('perfilAdmin.edit',$id = auth()->user()->id)}}">Perfil</a></li>
 
                       <li>
 

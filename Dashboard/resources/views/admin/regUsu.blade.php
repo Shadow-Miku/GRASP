@@ -22,7 +22,7 @@
 
             <div class="card-body">
 
-                <form class="m-4" method="post" action="{{route('adminUsu.store')}}">
+                <form class="m-4" method="post" action="{{route('adminUsu.store')}}" enctype="multipart/form-data">
                     @csrf
                     <!--Errores individuales y guardar los datos escritos-->
 
@@ -60,6 +60,10 @@
                     <p class="text-primary fst-italic" style="color: aqua"> 
                         {{ $errors->first('roll') }} </p>
                     </div>
+                <div class="mb-3">
+                    <label class="form-label">Imagen de perfil</label>
+                    <input class="form-control" type="file" name="file" accept="image/*">
+                </div>
 
 
             </div>
