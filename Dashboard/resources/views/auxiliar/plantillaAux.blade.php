@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
     <title>Dashboard</title>
-
 
 </head>
 
@@ -22,85 +22,63 @@
 
 <div class="container-fluid">
 
-  <div class="row flex-nowrap">
+<div class="row flex-nowrap">
 
-      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
 
-          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 
-            <!--enlace /-->
+            <div class="d-flex flex-column align-items-center">
 
-              <a href="  " class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <span class="fs-5 d-none d-sm-inline">Auxiliar de soporte</span> <br>
 
-                  <span class="fs-5 d-none d-sm-inline">Auxiliar de soporte</span>
+                <img src="{{ auth()->user()->url }} " alt="Profile Picture" width="200" height="200" class="rounded-circle mb-3">
 
-              </a>
+                <h2 class="fw-bold mb-0">{{ auth()->user()->name }}</h2>
 
-              <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+            </div>
 
-                <!--enlace menu-->
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
-                  <li class="nav-item">
+            <!--Inicio-->
+            <li class="nav-item">
+            <a href=" {{route('priAux')}} " class="nav-link align-middle px-0">
+                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline"> Inicio</span>
+            </a>
+            </li>
 
+            <!--Perfil-->
 
-                      <a href=" {{route('priAux')}} " class="nav-link align-middle px-0">
+            <li>
+                <a href=" {{route('perfilAux.edit',$id = auth()->user()->id)}} " class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-person"></i> <span class="ms-1 d-none d-sm-inline">Perfil</span></a>
+            </li>
 
-                          <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline"> Menu </span>
-                      </a>
+            <!-- Menu de Tickets -->
 
-                  </li>
+            <li>
+                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-sticky"></i> <span class="ms-1 d-none d-sm-inline"> Tickets </span> </a>
+                <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                    <li>
+                        <a href="  {{route('contrTic.index')}}  " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Gestión de tickets </span> </a>
+                    </li>
 
-                  <!-- Menu de Tickets -->
+                    <li>
+                        <a href=" {{route('mostrar-formulario')}} " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Reporte por fecha </span> </a>
+                    </li>
+                </ul>
+            </li>
 
-                  <li>
-                      <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+            <!-- Salir -->
+            <li>
+                <a href=" / " class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-box-arrow-right"></i> <span class="ms-1 d-none d-sm-inline">Salir</span></a>
+            </li>
 
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline"> Tickets </span> </a>
+            </ul>
 
-                          <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-
-                          <li>
-
-                            <a href="  {{route('contrTic.index')}}  " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Gestión de tickets </span> </a>
-
-                          </li>
-
-                          <li>
-
-                            <a href=" {{route('mostrar-formulario')}} " class="nav-link px-0"> <span class="d-none d-sm-inline"> &nbsp; &nbsp; Reporte por fecha </span> </a>
-
-                          </li>
-
-                      </ul>
-                  </li>
-
-              </ul>
-
-              <hr>
-
-              <div class="dropdown pb-4">
-                  <a href="  " class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="{{ auth()->user()->url }}" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                      <span class="d-none d-sm-inline mx-1"> {{ auth()->user()->name }}  </span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                      <!--<li><a class="dropdown-item" href="#">New project...</a></li>-->
-
-                      <!--<li><a class="dropdown-item" href="#">Settings</a></li>-->
-
-                      <li><a class="dropdown-item" href=" {{route('perfilAux.edit',$id = auth()->user()->id)}} ">Perfil</a></li>
-
-                      <li>
-
-                          <hr class="dropdown-divider">
-
-                      </li>
-            
-                      <li><a class="dropdown-item" href="/">Salir</a></li>
-
-                  </ul>
-
-              </div>
+            <hr>
 
           </div>
 
@@ -148,9 +126,9 @@
         // Agrega un evento onChange al elemento select
         select.addEventListener('change', function() {
             // Si el valor seleccionado es "Completado"
-            if (this.value === 'Completado') {
+            if (this.value === 'Completado'||this.value === 'Nunca solucionado') {
                 // Muestra la alerta con un mensaje personalizado y un botón para confirmar
-                if (confirm('¿Estás seguro de marcar este ticket como Completado? Una vez registrado así, no podrás realizar más comentarios y cambios.')) {
+                if (confirm('¿Estás seguro de marcar este ticket así? Una vez registrado así, no podrás realizar más comentarios y cambios.')) {
                     // Si el usuario confirma, envía el formulario
                     this.form.submit();
                 } else {

@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use app\Models\User;
 use Svg\Tag\Rect;
-use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -94,16 +94,22 @@ class UserController extends Controller
 
     public function updatenameAux(Request $request, $id)
     {
-        $imagen=$request->file('fotoaux')->store('public/img');
-        $url=Storage::url($imagen);
-        
-        DB::table('users')->where('id',$id)->update([
-            "name"=> $request->input('name'),
-            "url"=>$url,
-            "updated_at"=> Carbon::now()    
-        ]);
-        return redirect('auxiliar.priAux');
+    if ($request->hasFile('fotoaux')) {
+        $imagen = $request->file('fotoaux')->store('public/img');
+        $url = Storage::url($imagen);
+    } else {
+        $url = $user = auth()->user()->url;
     }
+
+    DB::table('users')->where('id', $id)->update([
+        "name" => $request->input('name'),
+        "url" => $url,
+        "updated_at" => Carbon::now()
+    ]);
+
+    return redirect('auxiliar.priAux');
+    }
+
 
     public function editnameCli()
     {
@@ -113,13 +119,17 @@ class UserController extends Controller
 
     public function updatenameCli(Request $request, $id)
     {
-        $imagen=$request->file('fotocli')->store('public/img');
-        $url=Storage::url($imagen);
+        if ($request->hasFile('fotocli')) {
+            $imagen = $request->file('fotocli')->store('public/img');
+            $url = Storage::url($imagen);
+        } else {
+            $url = $user = auth()->user()->url;
+        }
 
-        DB::table('users')->where('id',$id)->update([
-            "name"=> $request->input('name'),
-            "url"=>$url,
-            "updated_at"=> Carbon::now()
+        DB::table('users')->where('id', $id)->update([
+            "name" => $request->input('name'),
+            "url" => $url,
+            "updated_at" => Carbon::now()
         ]);
         return redirect('cliente.priCli');
     }
@@ -132,13 +142,17 @@ class UserController extends Controller
 
     public function updatenameAdmin(Request $request, $id)
     {
-        $imagen=$request->file('fotoadm')->store('public/img');
-        $url=Storage::url($imagen);
-        
-        DB::table('users')->where('id',$id)->update([
-            "name"=> $request->input('name'),
-            "url"=>$url,
-            "updated_at"=> Carbon::now()    
+        if ($request->hasFile('fotoadm')) {
+            $imagen = $request->file('fotoadm')->store('public/img');
+            $url = Storage::url($imagen);
+        } else {
+            $url = $user = auth()->user()->url;
+        }
+
+        DB::table('users')->where('id', $id)->update([
+            "name" => $request->input('name'),
+            "url" => $url,
+            "updated_at" => Carbon::now()
         ]);
         return redirect('admin.priAdm');
     }

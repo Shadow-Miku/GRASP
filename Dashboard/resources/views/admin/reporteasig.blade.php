@@ -8,21 +8,24 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <title>Reporte Asignaciones - Laravel Framework</title>
-<style>
-    table {
-        font-famiy: arial, sans-serif;
-        border-colapse: collapse;
-        width: 100%
-    }
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-    tr:nth-child(even) {
-        background-color: #dddddd:
-    }
-</style>
+    <style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th, td {
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even){background-color: #f2f2f2}
+
+		th {
+			background-color: #4CAF50;
+			color: white;
+		}
+	</style>
 </head>
 <body>
 <h2>Reporte de Asignaciones</h2>
@@ -41,15 +44,15 @@
                     <tbody>
                       @foreach ($consultaAsg as $consulta)
                         <tr>
-                            <th scope="row">{{$consulta->idAsg}}</th>  
-                            <td>{{$consulta->encargado}}</td>         
+                            <th scope="row">{{$consulta->idAsg}}</th>
+                            <td>{{$consulta->encargado}}</td>
                             <td>{{$consulta->detalles}}</td>
 		            <td>{{$consulta->created_at}}</td>
                       </tr>
-                    </tbody> 
+                    </tbody>
                   @endforeach
-    
+
         </table>
-    </div> 
+    </div>
 </body>
 </html>
