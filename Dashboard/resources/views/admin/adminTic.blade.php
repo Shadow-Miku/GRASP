@@ -57,36 +57,56 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($consultaTic as $consulta)
-          <tr>
-            <td>{{ $consulta->idTk }}</td>
-            <td>{{ $consulta->autor_name }}</td>
-            <td>{{ $consulta->departamento }}</td>
-            <td>{{ $consulta->clasificacion }}</td>
-            <td>{{ $consulta->detalles }}</td>
-            <td>{{ $consulta->created_at }}</td>
-            <td>{{ $consulta->respuesta }}</td>
-            <td>{{ $consulta->status }}</td>
-            <td>{{ $consulta->observacion }}</td>
-            <td>
-              @if ($consulta->status == 'Completado' || $consulta->status == 'Cancelado')
-              <button type="button" class="btn btn-warning" disabled>
-                <i class="bi bi-file-earmark-person"></i> Asignar Ticket
-              </button>
-              @else
-              <button class="btn btn-warning" onclick="location.href='{{ route('asigTic.create') }}'">
-                <i class="bi bi-file-earmark-person"></i> Asignar Ticket
-              </button>
-              @endif
-            </td>
-            <td>
-              <button class="btn btn-danger" onclick="location.href='{{ route('adminTic.edit', $consulta->idTk) }}'">
-                <i class="bi bi-vector-pen"></i> Realizar comentarios y observaciones
-              </button>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
+            @foreach ($consultaTic as $consulta)
+            <tr>
+              <td>{{ $consulta->idTk }}</td>
+              <td>{{ $consulta->autor_name }}</td>
+              <td>{{ $consulta->departamento }}</td>
+              <td>{{ $consulta->clasificacion }}</td>
+              <td>{{ $consulta->detalles }}</td>
+              <td>{{ $consulta->created_at }}</td>
+              <td>{{ $consulta->respuesta }}</td>
+              <td style="color:
+                  @switch($consulta->status)
+                      @case('Cancelado por el cliente')
+                          red
+                          @break
+                      @case('Nunca solucionado')
+                          yellow
+                          @break
+                      @case('Completado')
+                          green
+                          @break
+                      @case('Asignado')
+                          blue
+                          @break
+                      @case('En proceso')
+                          orange
+                          @break
+                      @default
+                          black
+                  @endswitch
+              ">{{ $consulta->status }}</td>
+              <td>{{ $consulta->observacion }}</td>
+              <td>
+                @if ($consulta->status == 'Completado' || $consulta->status == 'Cancelado por el cliente')
+                <button type="button" class="btn btn-warning" disabled>
+                  <i class="bi bi-file-earmark-person"></i> Asignar Ticket
+                </button>
+                @else
+                <button class="btn btn-warning" onclick="location.href='{{ route('asigTic.create') }}'">
+                  <i class="bi bi-file-earmark-person"></i> Asignar Ticket
+                </button>
+                @endif
+              </td>
+              <td>
+                <button class="btn btn-danger" onclick="location.href='{{ route('adminTic.edit', $consulta->idTk) }}'">
+                  <i class="bi bi-vector-pen"></i> Realizar comentarios y observaciones
+                </button>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
       </table>
 </div>
 

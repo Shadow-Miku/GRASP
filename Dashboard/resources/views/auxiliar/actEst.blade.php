@@ -45,10 +45,8 @@
 
                             <option disabled selected> Seleccione el status del ticket...</option>
                                 <option value="Completado"> Completado </option>
-                                <option value="Asignado"> Asignado </option>
 				                <option value="En proceso"> En proceso </option>
                                 <option value="Nunca solucionado"> Nunca solucionado </option>
-				                <option value="Cancelado por el cliente"> Cancelado por el cliente </option>
                         </select>
                     <p class="text-primary fst-italic" style="color: aqua">
                         {{ $errors->first('status') }} </p>

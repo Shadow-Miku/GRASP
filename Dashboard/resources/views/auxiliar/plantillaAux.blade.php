@@ -99,24 +99,8 @@
 
 <!--Termina Barra navegación-->
 
-<!--Pie de Pagina-->
-
 <!--Alertas-->
 
-<div class="alert alert-success" role="alert">
-
-  Macuin Dashboards.   <?php  echo date('Y');?> Copyrigth®
-
-  <?php
-  date_default_timezone_set('America/Mexico_City');
-
-  $fechaActual = date('d/m/y h:i:s');
-
-  echo "$fechaActual <br>";
-
-  ?>
-
-</div>
 <!--Script alerta completado-->
 @section('scripts')
     <script>

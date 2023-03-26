@@ -15,10 +15,10 @@ class ValidadorTickets extends FormRequest
     public function rules()
     {
         return [
-            'autor',
-            'departamento',
-            'clasificacion',
-            'detalles',
+            'autor'=>'required',
+            'departamento'=>'required',
+            'clasificacion'=>'required',
+            'detalles'=>'required',
             'respuesta',
             'status',
             'observacion',
