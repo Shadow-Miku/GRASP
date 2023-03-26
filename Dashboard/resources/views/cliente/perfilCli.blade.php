@@ -21,7 +21,7 @@
         <div class="card  mb-5 fw-bold">
 
             <div class="card-header fw-bold">
-                Actualizar mi nombre
+                Actualizar datos
             </div>
 
             <div class="card-body">
@@ -29,9 +29,9 @@
                 @csrf
 
                 {!! method_field('PUT')!!}
-                <center>
-                <img src="{{ auth()->user()->url }}" alt="hugenerd" width="250" class="rounded-circle">
-                </center>
+                <div class="d-flex flex-column align-items-center">
+                    <img src="{{ auth()->user()->url }} " alt="Profile Picture" width="300" height="300" class="rounded-circle mb-3">
+                </div>
                 <div class="mb-3">
                         <label class="form-label">Nombre y apellidos:</label>
                         <input type="text" class="form-control" name="name" value="{{$user = auth()->user()->name}}">
@@ -46,6 +46,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary  m-1"> Actualizar Datos </button>
+                    <a href="{{route('priCli')}}" class="btn btn-warning">No, hacer nada </a>
             </form>
             </div>
 

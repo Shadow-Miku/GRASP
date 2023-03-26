@@ -7,7 +7,7 @@
             'Muy bien!',
             'Usuario registrado',
             'success'
-          ) </script>"!!}        
+          ) </script>"!!}
     @endif
 
     <div class="container mt-5 col-md-6">
@@ -31,7 +31,7 @@
                         <input type="text" class="form-control" name="name" value="{{old('name')}}">
                         <p class="text-primary fst-italic"> {{ $errors->first('name') }} </p>
                     </div>
-                    
+
                     <div class="mb-3">
                         <label class="form-label">Correo Electronico:</label>
                         <input type="email" class="form-control"  name="email" value="{{old('email')}}">
@@ -49,20 +49,21 @@
                         <input type="text" class="form-control" name="password" value="{{old('password')}}">
                         <p class="text-primary fst-italic"> {{ $errors->first('password') }} </p>
                     </div>
-		
+
 		    <div class="mb-3">
                         <label for="text" class="form-label">Roles:</label>
                         <select class="form-select" name="roll" value="{{old('roll')}}" aria-label="Default select example">
                             <option disabled selected> Seleccione el roll del usuario...</option>
                                 <option value="Auxiliar">Auxiliar</option>
                                 <option value="Cliente">Cliente</option>
+                                <option value="Cliente">Admin</option>
                         </select>
-                    <p class="text-primary fst-italic" style="color: aqua"> 
+                    <p class="text-primary fst-italic" style="color: aqua">
                         {{ $errors->first('roll') }} </p>
                     </div>
                 <div class="mb-3">
                     <label class="form-label">Imagen de perfil</label>
-                    <input class="form-control" type="file" name="file" accept="image/*">
+                    <input class="form-control" type="file" name="file" accept="image/*" required>
                 </div>
 
 
@@ -71,12 +72,12 @@
             <div class="card-footer">
 
                 <button type="submit" class="btn btn-success m-1"> Registrar usuario </button>
-            
+
             </form>
 
             </div>
         </div>
     </div>
 
-    
+
 @stop

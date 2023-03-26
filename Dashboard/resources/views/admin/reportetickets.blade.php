@@ -8,21 +8,24 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <title>Reporte Tickets - Laravel Framework</title>
-<style>
-    table {
-        font-famiy: arial, sans-serif;
-        border-colapse: collapse;
-        width: 100%
-    }
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-    tr:nth-child(even) {
-        background-color: #dddddd:
-    }
-</style>
+    <style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th, td {
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even){background-color: #f2f2f2}
+
+		th {
+			background-color: #4CAF50;
+			color: white;
+		}
+	</style>
 </head>
 <body>
 <h2>Reporte de Tickets</h2>
@@ -46,19 +49,19 @@
             <tbody>
               @foreach ($consultaTic as $consulta)
                 <tr>
-                    <th scope="row">{{$consulta->idTk}}</th>  
-                    <td>{{$consulta->autor_name}}</td> 
-                    <td>{{$consulta->departamento}}</td> 
+                    <th scope="row">{{$consulta->idTk}}</th>
+                    <td>{{$consulta->autor_name}}</td>
+                    <td>{{$consulta->departamento}}</td>
                     <td>{{$consulta->clasificacion}}</td>
-                    <td>{{$consulta->detalles}}</td> 
-                    <td>{{$consulta->created_at}}</td>  
+                    <td>{{$consulta->detalles}}</td>
+                    <td>{{$consulta->created_at}}</td>
                     <td>{{$consulta->respuesta}}</td>
                     <td>{{$consulta->status}}</td>
 		                <td>{{$consulta->observacion}}</td>
               </tr>
-            </tbody> 
+            </tbody>
               @endforeach
           </table>
-    </div> 
+    </div>
 </body>
 </html>

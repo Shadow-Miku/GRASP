@@ -4,9 +4,6 @@
 
 
     <div class="container mt-5 col-md-6">
-
-        <h1 class="display-1 text-center mb-5"> Actualizar Nombre </h1>
-
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
 
@@ -22,7 +19,7 @@
         <div class="card  mb-5 fw-bold">
 
             <div class="card-header fw-bold">
-                Actualizar mi nombre
+                Actualizar datos
             </div>
 
             <div class="card-body">
@@ -46,6 +43,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary  m-1"> Actualizar nombre </button>
+                    <a href="{{route('priAux')}}" class="btn btn-warning">No, hacer nada </a>
             </form>
             </div>
 

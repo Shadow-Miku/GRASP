@@ -61,6 +61,11 @@ Route::post('cliente.reg',[TicketController::class,'store'])->name('regTic.store
 // Index
 Route::get('cliente.consTic',[TicketController::class,'indexCli'])->name('consTic.indexCli');
 
+//edit
+
+//cancelar ticket
+Route::put('cliente.consTic',[TicketController::class,'cancelarTicket'])->name('cancelarTicket.update');
+
 /*
 |--------------------------------------------------------------------------
 | CRUD DEPARTAMETO JEFE

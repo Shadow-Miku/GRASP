@@ -61,6 +61,7 @@
                             <option disabled selected> Seleccione el roll del usuario...</option>
                                 <option value="Auxiliar">Auxiliar</option>
                                 <option value="Cliente">Cliente</option>
+                                <option value="Admin">Admin</option>
                         </select>
                     <p class="text-primary fst-italic" style="color: aqua">
                         {{ $errors->first('roll') }} </p>
@@ -70,6 +71,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary  m-1"> Actualizar datos </button>
+                    <a href="{{route('adminUsu.index')}}" class="btn btn-warning">No, hacer nada </a>
             </form>
             </div>
 

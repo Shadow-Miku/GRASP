@@ -10,14 +10,14 @@
                 @foreach ($errors->all() as $error)
 
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>{{ $error }}</strong> 
+                    <strong>{{ $error }}</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                 </div>    
+                 </div>
 
                 @endforeach
 
             @endif
-       
+
         <div class="card  mb-5 fw-bold">
 
             <div class="card-header fw-bold">
@@ -25,7 +25,7 @@
             </div>
 
             <div class="card-body">
-            <form class="m-4" method="post" action="{{route('adminDep.update', $consultaId->idDep)}}">    
+            <form class="m-4" method="post" action="{{route('adminDep.update', $consultaId->idDep)}}">
                 @csrf
 
                 {!! method_field('PUT')!!}
@@ -36,10 +36,11 @@
                         <p class="text-primary fst-italic"> {{ $errors->first('departamento') }} </p>
                     </div>
 
-                    
+
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary  m-1"> Actualizar datos </button>
+                    <a href="{{route('adminDep.index')}}" class="btn btn-warning">No, hacer nada </a>
             </form>
             </div>
 
