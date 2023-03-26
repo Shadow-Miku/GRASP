@@ -62,9 +62,9 @@ Route::post('cliente.reg',[TicketController::class,'store'])->name('regTic.store
 Route::get('cliente.consTic',[TicketController::class,'indexCli'])->name('consTic.indexCli');
 
 //edit
-
+Route::get('cliente.consTic/{id}/edit',[TicketController::class,'editCli'])->name('infoCanT.edit');
 //cancelar ticket
-Route::put('cliente.consTic',[TicketController::class,'cancelarTicket'])->name('cancelarTicket.update');
+Route::put('cliente.consTic/{id}',[TicketController::class,'cancelarTicket'])->name('cancelarTicket.update');
 
 /*
 |--------------------------------------------------------------------------

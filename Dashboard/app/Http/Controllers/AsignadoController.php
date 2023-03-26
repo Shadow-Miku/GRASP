@@ -37,12 +37,21 @@ class AsignadoController extends Controller
 
     public function store(ValidadorAsignados $request)
     {
+        $ticketId = $request->input('ticket');
+
         DB::table('asignados')->insert([
             "encargadoId"=> $request->input('encargado'),
-            "ticketId"=> $request->input('ticket'),
+            "ticketId"=> $ticketId,
             "created_at"=> Carbon::now(),
             "updated_at"=> Carbon::now(),
         ]);
+
+        // Actualizar el status del ticket a "Asignado"
+        DB::table('tickets')->where('idTk', $ticketId)->update([
+            "status"=> 'Asignado',
+            "updated_at"=> Carbon::now()
+        ]);
+
         return redirect('admin.adminAsg')->with('confirmacion','abc');
     }
 

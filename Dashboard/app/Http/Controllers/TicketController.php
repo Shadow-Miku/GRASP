@@ -137,6 +137,10 @@ class TicketController extends Controller
     //update Auxiliar
     public function updateAux(Request $request, $id)
     {
+        $request->validate([
+            'status' => 'required'
+        ]);
+
         DB::table('tickets')->where('idTk',$id)->update([
             "respuesta"=> $request->input('respuesta'),
             "status"=> $request->input('status'),
@@ -145,16 +149,36 @@ class TicketController extends Controller
 
         return redirect('auxiliar.contrTic')->with('actualizar','abc');
     }
-    //se usa????
-    public function cambiarstatus(Request $request, $id)
+
+
+
+    //cancelar ticket cliente
+
+    public function editCli($id)
     {
-        DB::table('tickets')->where('idTk',$id)->update([
+        $consultaId = DB::table('tickets')->where('idTk',$id)->first();
+        return view('cliente.canTic',compact('consultaId'));
+    }
+
+    public function cancelarTicket(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required'
+        ]);
+
+        // Actualizar el ticket
+        DB::table('tickets')->where('idTk', $id)->update([
             "status"=> $request->input('status'),
             "updated_at"=> Carbon::now()
         ]);
 
-        return redirect('admin.adminTic')->with('actualizar','abc');
+        return redirect('cliente.consTic')->with('actualizar','abc');
     }
+
+
+
+
+
 
     public function destroy($id)
     {

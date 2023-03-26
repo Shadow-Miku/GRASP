@@ -65,10 +65,30 @@
             <td>{{$consulta->detalles}}</td>
             <td>{{$consulta->created_at}}</td>
             <td>{{$consulta->respuesta}}</td>
-            <td>{{$consulta->status}}</td>
+            <td style="color:
+            @switch($consulta->status)
+                @case('Cancelado por el cliente')
+                    red
+                    @break
+                @case('Nunca solucionado')
+                    yellow
+                    @break
+                @case('Completado')
+                    green
+                    @break
+                @case('Asignado')
+                    blue
+                    @break
+                @case('En proceso')
+                    orange
+                    @break
+                @default
+                    black
+            @endswitch
+        ">{{$consulta->status}}</td>
             <td>
               @if ($consulta->status == 'Pendiente' || $consulta->status == 'Cancelado' || $consulta->status == 'Asignado')
-                <button class="btn btn-warning" onclick="location.href='  '">
+                <button class="btn btn-warning" onclick="location.href=' {{route('infoCanT.edit', $consulta->idTk)}} '">
                   <i class="bi bi-file-earmark-person"></i> Cancelar Ticket
                 </button>
               @else

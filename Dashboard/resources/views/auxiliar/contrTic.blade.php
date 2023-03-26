@@ -82,7 +82,21 @@
                     <td>{{$consulta->detalles}}</td>
                     <td>{{$consulta->created_at}}</td>
                     <td>{{$consulta->respuesta}}</td>
-                    <td>{{$consulta->status}}</td>
+                    <td>
+                        @if ($consulta->status == 'Completado')
+                            <span class="text-success">{{$consulta->status}}</span>
+                        @elseif ($consulta->status == 'Cancelado por el cliente')
+                            <span class="text-danger">{{$consulta->status}}</span>
+                        @elseif ($consulta->status == 'Nunca solucionado')
+                            <span class="text-warning">{{$consulta->status}}</span>
+                        @elseif ($consulta->status == 'Asignado')
+                            <span class="text-primary">{{$consulta->status}}</span>
+                        @elseif ($consulta->status == 'En proceso')
+                            <span style="color:rgb(255, 196, 0);">{{$consulta->status}}</span>
+                        @else
+                            {{$consulta->status}}
+                        @endif
+                    </td>
                     <td>{{$consulta->observacion}}</td>
                     <td>
                         @if ($consulta->status == 'Completado' || $consulta->status == 'Cancelado por el cliente'|| $consulta->status == 'Nunca solucionado')
@@ -97,7 +111,7 @@
                     </td>
                 </tr>
                 @endforeach
-            </tbody>
+                </tbody>
         </table>
     </div>
 </div>
