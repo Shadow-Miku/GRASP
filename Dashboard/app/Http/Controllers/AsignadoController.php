@@ -31,7 +31,7 @@ class AsignadoController extends Controller
     public function create()
     {
         $encargado = User::where('roll','Auxiliar')->get();
-        $ticket = tickets::all();
+        $ticket = tickets::whereNotIn('status', ['Cancelado por el cliente', 'Asignado', 'Nunca solucionado'])->get();
         return view('admin.asigTic',compact('encargado','ticket'));
     }
 
