@@ -89,7 +89,7 @@
               ">{{ $consulta->status }}</td>
               <td>{{ $consulta->observacion }}</td>
               <td>
-                @if ($consulta->status == 'Completado' || $consulta->status == 'Cancelado por el cliente')
+                @if ($consulta->status == 'Completado' || $consulta->status == 'Cancelado por el cliente'|| $consulta->status == 'Asignado'|| $consulta->status == 'Nunca solucionado')
                 <button type="button" class="btn btn-warning" disabled>
                   <i class="bi bi-file-earmark-person"></i> Asignar Ticket
                 </button>
